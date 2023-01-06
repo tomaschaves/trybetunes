@@ -1,10 +1,18 @@
+import { element } from 'prop-types';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 class Search extends Component {
   state = {
     isSearchButtonDisabled: true,
     search: '',
+    searchedTerm: '',
+    success: false,
+    artistName: '',
+    albums: [],
+    firstSearch: true,
   };
 
   handleChange = ({ target }) => {
@@ -22,26 +30,52 @@ class Search extends Component {
     const { search } = this.state;
     const minimum = 2;
     if (search.length >= minimum) {
-      console.log('deu');
       this.setState({
         isSearchButtonDisabled: false,
       });
     }
   };
 
-  render() {
-    const { isSearchButtonDisabled } = this.state;
+  handleSearch = async (event) => {
+    event.preventDefault();
 
+    const { search } = this.state;
+    this.setState({
+      search: '',
+      searchedTerm: search,
+      firstSearch: false,
+    });
+
+    const results = await searchAlbumsAPI(search);
+    // console.log(results);
+    this.setState({
+      success: true,
+      artistName: search,
+      albums: results,
+    });
+  };
+
+  render() {
+    const {
+      isSearchButtonDisabled,
+      search,
+      success,
+      artistName,
+      albums,
+      firstSearch } = this.state;
+
+    console.log(this.state);
     return (
       <div data-testid="page-search">
         <Header />
         Search
-        <div data-testid="page-login">
+        <div data-testid="page-search">
           <form>
             <input
               type="text"
               name="search"
               id="search"
+              value={ search }
               data-testid="search-artist-input"
               onChange={ this.handleChange }
             />
@@ -49,10 +83,37 @@ class Search extends Component {
               type="button"
               data-testid="search-artist-button"
               disabled={ isSearchButtonDisabled }
+              onClick={ this.handleSearch }
             >
-              Entrar
+              Pesquisar
             </button>
           </form>
+          <h1>
+            {`Resultado de álbuns de: ${artistName}` }
+          </h1>
+          { ((!success) && (firstSearch === false))
+            && <h2>Nenhum álbum foi encontrado</h2> }
+          { success && albums.map((album) => (
+            <div key={ album.collectionId }>
+              {`Nome do artista: ${album.artistName}`}
+              <br />
+              {`Álbum: ${album.collectionName}`}
+              <br />
+              Capa:
+              <br />
+              <img
+                src={ album.artworkUrl100 }
+                alt={ album.collectionName }
+              />
+              <br />
+              <Link
+                to={ `album/${album.collectionId}` }
+                data-testid={ `link-to-album-${album.collectionId}` }
+              >
+                Album
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     );
