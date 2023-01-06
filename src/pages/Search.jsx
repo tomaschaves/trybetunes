@@ -46,7 +46,6 @@ class Search extends Component {
     });
 
     const results = await searchAlbumsAPI(search);
-    // console.log(results);
     this.setState({
       success: true,
       artistName: search,
@@ -63,12 +62,11 @@ class Search extends Component {
       albums,
       firstSearch } = this.state;
 
-    console.log(this.state);
     return (
       <div data-testid="page-search">
         <Header />
         Search
-        <div data-testid="page-search">
+        <div>
           <form>
             <input
               type="text"
