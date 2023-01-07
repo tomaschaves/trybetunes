@@ -7,7 +7,6 @@ class Search extends Component {
   state = {
     isSearchButtonDisabled: true,
     search: '',
-    // searchedTerm: '',
     success: false,
     artistName: '',
     albums: [],
@@ -41,7 +40,6 @@ class Search extends Component {
     const { search } = this.state;
     this.setState({
       search: '',
-      // searchedTerm: search,
       firstSearch: false,
     });
 
