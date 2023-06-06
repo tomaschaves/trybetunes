@@ -31,12 +31,15 @@ class Search extends Component {
       this.setState({
         isSearchButtonDisabled: false,
       });
+    } else {
+      this.setState({
+        isSearchButtonDisabled: true,
+      });
     }
   };
 
   handleSearch = async (event) => {
     event.preventDefault();
-
     const { search } = this.state;
     this.setState({
       search: '',
@@ -48,6 +51,7 @@ class Search extends Component {
       success: true,
       artistName: search,
       albums: results,
+      isSearchButtonDisabled: true,
     });
   };
 
@@ -75,7 +79,7 @@ class Search extends Component {
               onChange={ this.handleChange }
             />
             <button
-              type="button"
+              type="submit"
               data-testid="search-artist-button"
               disabled={ isSearchButtonDisabled }
               onClick={ this.handleSearch }

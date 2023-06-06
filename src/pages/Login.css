@@ -1,0 +1,20 @@
+[ data-testid *= 'page-login' ] {
+  border: 5px solid gold;
+  display: flex;
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+[ data-testid *= 'login-name-input' ] {
+  border: 5px solid red;
+}
+
+[ data-testid *= 'login-submit-button' ] {
+  border: 5px solid silver;
+}
+
+:disabled {
+  color: red;
+}

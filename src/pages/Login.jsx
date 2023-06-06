@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
+import './Login.css';
 
 class Login extends Component {
   state = {
@@ -50,7 +51,7 @@ class Login extends Component {
 
     return (
       <div data-testid="page-login">
-        <form onSubmit={ this.onSaveButtonClick }>
+        <form onSubmit={ this.handleClick }>
           <input
             type="text"
             name="user"

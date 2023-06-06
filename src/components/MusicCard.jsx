@@ -43,7 +43,7 @@ class MusicCard extends Component {
           this.setState({
             loading: false,
             isChecked: false,
-          });
+          }, () => this.getFavorites());
         });
       });
     }
