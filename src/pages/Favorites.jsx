@@ -29,7 +29,7 @@ class Favorites extends Component {
     });
     this.setState({
       isLoading: false,
-    })
+    });
   };
 
   render() {
