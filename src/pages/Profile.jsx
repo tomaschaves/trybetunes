@@ -19,7 +19,6 @@ class Profile extends Component {
 
   render() {
     const { user } = this.state;
-    console.log(typeof user);
     return (
       <div data-testid="page-profile">
         <Header />
