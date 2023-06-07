@@ -8,6 +8,7 @@ class Favorites extends Component {
   state = {
     favoriteSongs: [],
     isLoading: false,
+    // isLoadingMusicCard: false,
   };
 
   componentDidMount() {
@@ -32,6 +33,15 @@ class Favorites extends Component {
     });
   };
 
+  // handleClickMusicCard = async () => {
+  //   const { isLoadingMusicCard } = this.state;
+  //   const songs = await getFavoriteSongs();
+  //   this.setState({
+  //     favoriteSongs: songs,
+  //     isLoadingMusicCard: !isLoadingMusicCard,
+  //   });
+  // };
+
   render() {
     const { favoriteSongs, isLoading } = this.state;
     return (
@@ -50,6 +60,7 @@ class Favorites extends Component {
                 previewUrl={ song.previewUrl }
                 trackId={ song.trackId }
                 song={ song }
+                // handleClickMusicCard={ this.handleClickMusicCard() }
               />
             ))
         }

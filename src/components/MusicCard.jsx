@@ -27,27 +27,19 @@ class MusicCard extends Component {
   favorite = async () => {
     const { song } = this.props;
     const { isChecked } = this.state;
-
+    this.setState({
+      loading: true,
+    });
     if (!isChecked) {
-      this.setState({ loading: true }, () => {
-        addSong(song).then(() => {
-          this.setState({
-            loading: false,
-            isChecked: true,
-          });
-        });
-      });
+      await addSong(song);
+      await this.getFavorites();
     } else {
-      this.setState({ loading: true }, () => {
-        removeSong(song).then(() => {
-          this.setState({
-            loading: false,
-            isChecked: false,
-          }, () => this.getFavorites());
-        });
-      });
+      removeSong(song);
+      await this.getFavorites();
     }
-    this.getFavorites();
+    this.setState({
+      loading: false,
+    });
   };
 
   render() {
