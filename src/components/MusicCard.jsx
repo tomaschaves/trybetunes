@@ -25,7 +25,7 @@ class MusicCard extends Component {
   };
 
   favorite = async () => {
-    const { song } = this.props;
+    const { song, handleClickMusicCard } = this.props;
     const { isChecked } = this.state;
     this.setState({
       loading: true,
@@ -34,8 +34,11 @@ class MusicCard extends Component {
       await addSong(song);
       await this.getFavorites();
     } else {
-      removeSong(song);
+      await removeSong(song);
       await this.getFavorites();
+      if (handleClickMusicCard) {
+        handleClickMusicCard(song);
+      }
     }
     this.setState({
       loading: false,
