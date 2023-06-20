@@ -7,10 +7,12 @@ class Header extends Component {
   state = {
     userName: '',
     loading: false,
+    userImage: '',
   };
 
   componentDidMount() {
     this.fetchName();
+    this.fetchImage();
   }
 
   fetchName = async () => {
@@ -24,31 +26,46 @@ class Header extends Component {
     });
   };
 
+  fetchImage = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user.image.length > 0) {
+      this.setState({
+        userImage: user.image,
+      });
+    }
+    console.log(user);
+  };
+
   render() {
-    const { userName, loading } = this.state;
+    const { userName, loading, userImage } = this.state;
     if (loading) return <h3>Carregando...</h3>;
 
     return (
       <header data-testid="header-component">
-        <ul>
-          <li>
-            <Link to="/search" data-testid="link-to-search">
+        <ul className="links">
+          <Link to="/search" data-testid="link-to-search" className="text-link">
+            <li>
               Buscar
-            </Link>
-          </li>
-          <li>
-            <Link to="/favorites" data-testid="link-to-favorites">
+            </li>
+          </Link>
+          <Link to="/favorites" data-testid="link-to-favorites" className="text-link">
+            <li>
               Favoritos
-            </Link>
-          </li>
-          <li>
-            <Link to="/profile" data-testid="link-to-profile">
+            </li>
+          </Link>
+          <Link to="/profile" data-testid="link-to-profile" className="text-link">
+            <li>
               Perfil
-            </Link>
-          </li>
+            </li>
+          </Link>
         </ul>
         <h3 data-testid="header-user-name">
           { userName }
+          {
+            userImage.length > 0 && (
+              <img src={ userImage } alt={ userName } className="profileImage" />
+            )
+          }
         </h3>
       </header>
     );

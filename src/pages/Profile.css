@@ -1,0 +1,20 @@
+/* Melhorar CSS */
+.profile-section {
+  display: flex;
+}
+
+ul {
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+li {
+  margin-inline: 20px;
+}
+
+.profile-image {
+  border: 5px solid silver;
+  border-radius: 0.5cm;
+  height: 100px;
+  width: 100px;
+}

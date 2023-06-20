@@ -1,5 +1,4 @@
 [ data-testid *= 'page-login' ] {
-  border: 5px solid gold;
   display: flex;
   left: 50%;
   position: fixed;
@@ -8,13 +7,38 @@
 }
 
 [ data-testid *= 'login-name-input' ] {
-  border: 5px solid red;
+  border: 5px solid;
+  border-radius: 50px;
 }
 
 [ data-testid *= 'login-submit-button' ] {
   border: 5px solid silver;
+  border-radius: 10px;
 }
 
-:disabled {
-  color: red;
+/* #login {
+  align-items: center;
+  display: flex;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  height: 100vh;
+  justify-content: center;
+} */
+
+.card {
+  align-items: center;
+  background-color: rgba(85, 75, 75, 0.3);
+  background-image: url('../images/Wallpaper\ music\ background\ dark\ vinyl\ record\ images\ for.jpg');
+  background-size: 100% 100%;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  height: 230px;
+  justify-content: center;
+  opacity: 60%;
+  padding: 40px;
+  width: 230px;
+}
+
+p {
+  color: white;
 }

@@ -54,13 +54,8 @@ class ProfileEdit extends Component {
     event.preventDefault();
     const { history } = this.props;
     const { user } = this.state;
-    this.setState({
-      editModeOn: true,
-    });
     await updateUser(user);
-    this.setState({
-      editModeOn: false,
-    }, () => history.push('/profile'));
+    history.push('/profile');
   };
 
   render() {
@@ -85,12 +80,14 @@ class ProfileEdit extends Component {
               <input
                 type="text"
                 data-testid="edit-input-email"
+                value={ user.email }
                 name="email"
                 onChange={ this.handleChange }
               />
               <input
                 type="text"
                 data-testid="edit-input-description"
+                value={ user.description }
                 name="description"
                 onChange={ this.handleChange }
               />
@@ -98,6 +95,7 @@ class ProfileEdit extends Component {
                 type="text"
                 data-testid="edit-input-image"
                 name="image"
+                value={ user.image }
                 onChange={ this.handleChange }
               />
               <button

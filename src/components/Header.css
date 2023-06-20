@@ -1,3 +1,29 @@
-/* [ data-testid *= 'header-component' ] {
+[ data-testid *= 'header-component' ] {
+  background-image: url('https://cdn.pixabay.com/photo/2015/12/27/05/48/turntable-1109588_1280.jpg');
   display: flex;
-} */
+  justify-content: space-between;
+}
+
+[ data-testid *= 'header-user-name' ] {
+  margin-right: 20px;
+}
+
+li {
+  color: white;
+}
+
+h3 {
+  color: white;
+}
+
+.text-link {
+  text-decoration: none;
+}
+
+.profileImage {
+  border-radius: 10px;
+  height: 20px;
+  width: auto;
+}
+
+/* TODO ARRUMAR FONTES DO CABEÇALHO */

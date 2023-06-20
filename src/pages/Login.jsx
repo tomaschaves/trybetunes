@@ -51,7 +51,8 @@ class Login extends Component {
 
     return (
       <div data-testid="page-login">
-        <form onSubmit={ this.handleClick }>
+        <form onSubmit={ this.handleClick } className="card">
+          <p>Insira seu usuário:</p>
           <input
             type="text"
             name="user"

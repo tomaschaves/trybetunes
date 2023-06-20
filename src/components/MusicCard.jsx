@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import './MusicCard.css';
 
 class MusicCard extends Component {
   state = {
@@ -40,9 +41,7 @@ class MusicCard extends Component {
         handleClickMusicCard(song);
       }
     }
-    this.setState({
-      loading: false,
-    });
+    this.getFavorites();
   };
 
   render() {
@@ -65,6 +64,7 @@ class MusicCard extends Component {
           { loading ? 'Carregando...' : 'Favorita'}
           <input
             type="checkbox"
+            className="favorite-button"
             id={ trackId }
             data-testid={ `checkbox-music-${trackId}` }
             checked={ isChecked }
