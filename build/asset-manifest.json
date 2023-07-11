@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7cc2eb9e.css",
+    "main.js": "/static/js/main.a912b3e9.js",
+    "static/media/Wallpaper music background dark vinyl record images for.jpg": "/static/media/Wallpaper music background dark vinyl record images for.3451f7d712a695037e59.jpg",
+    "index.html": "/index.html",
+    "main.7cc2eb9e.css.map": "/static/css/main.7cc2eb9e.css.map",
+    "main.a912b3e9.js.map": "/static/js/main.a912b3e9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7cc2eb9e.css",
+    "static/js/main.a912b3e9.js"
+  ]
+}
